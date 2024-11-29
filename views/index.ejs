@@ -1,0 +1,32 @@
+<%- include('partials/header.ejs'); -%>
+
+<header>
+    <h1 style="text-align: start; color: #28a745;">Rating for Animals</h1>
+    <p style="text-align: start;">This is my <strong>personal</strong> opinion. I'm sorry if it doesn't match your love for some animals.</p>
+</header>
+
+<div class="box">
+    <% listAnimalsWithComments.forEach((animal) => { %>
+        <div class="animal">
+            <h2><%= animal.animal_name %></h2>
+            <% if (animal.comment_text) { %>
+                <p><strong>Comment:</strong> <%= animal.comment_text %></p>
+                <p><strong>Rating:</strong> <%= animal.rating %> / 10</p>
+            <% } else { %>
+                <p>No comments yet for this animal.</p>
+            <% } %>
+        </div>
+    <% }); %>
+    
+</div>
+
+<div class="form-container">
+    <h3>Add New Animal and Comment</h3>
+    <form action="/add" method="POST">
+        <input type="text" name="animal_name" placeholder="Enter animal name" required />
+        <textarea name="comment" placeholder="Enter your comment" rows="3" required></textarea>
+        <input type="number" name="rating" placeholder="Rating (1-10)" min="1" max="10" required />
+        <button type="submit">Add Animal and Comment</button>
+    </form>
+</div>
+

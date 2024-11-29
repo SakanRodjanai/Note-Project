@@ -1,0 +1,106 @@
+/* จัดการส่วนตัวพื้นฐาน */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f1f5f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+h1 {
+    text-align: center;
+    color: #28a745;
+}
+
+.box {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* การจัดกล่องของแต่ละสัตว์ */
+.animal {
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.animal h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #343a40;
+    text-align: center;
+}
+
+.animal p {
+    margin: 5px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* จัดฟอร์มให้อยู่ตรงกลางและดูสวยงาม */
+.form-container form {
+    width: 100%; /* ให้ฟอร์มกว้างเต็มกรอบ */
+    max-width: 800px; /* จำกัดขนาดสูงสุดของฟอร์ม (ถ้าจำเป็น) */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* เพิ่มช่องว่างระหว่างองค์ประกอบ */
+    align-items: center;
+    padding: 0;
+}
+
+.form-container h3 {
+    margin-bottom: 15px;
+    color: #28a745;
+    text-align: center;
+}
+
+.form-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container button {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-container textarea {
+    resize: none; /* ปิดการขยายขนาดของกล่องข้อความ */
+}
+
+.form-container button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #218838;
+}
