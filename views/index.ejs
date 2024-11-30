@@ -18,7 +18,7 @@
       <h2><%= animal.animal_name %></h2>
       <% if (animal.comment_text) { %>
         <p><strong>Comment:</strong> <%= animal.comment_text %></p>
-        <p><strong>Rating:</strong> <%= animal.rating %> / 10</p>
+        <p style="text-align: end;"><strong>Rating:</strong> <%= animal.rating %> / 10</p>
       <% } else { %>
         <p>No comments yet for this animal.</p>
       <% } %>
