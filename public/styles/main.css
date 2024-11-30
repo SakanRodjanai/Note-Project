@@ -104,3 +104,37 @@ h1 {
 .form-container button:hover {
     background-color: #218838;
 }
+
+.hidden {
+    display: none;
+  }
+
+  .edit-form {
+    margin-top: 10px;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+   .edit-form input,
+  .edit-form button {
+    width: 100%; /* ให้ input และปุ่มขยายเต็ม */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* ไม่ให้ padding กระทบความกว้าง */
+  }
+  .toggle-edit {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .toggle-edit:hover {
+    background-color: #218838;
+  }
