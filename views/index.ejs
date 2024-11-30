@@ -1,32 +1,56 @@
 <%- include('partials/header.ejs'); -%>
 
 <header>
-    <h1 style="text-align: start; color: #28a745;">Rating for Animals</h1>
-    <p style="text-align: start;">This is my <strong>personal</strong> opinion. I'm sorry if it doesn't match your love for some animals.</p>
+  <h1 style="text-align: start; color: #28a745;">Rating for Animals</h1>
+  <p style="text-align: start;">
+    This is my <strong>personal</strong> opinion. I'm sorry if it doesn't match your love for some animals.
+  </p>
 </header>
 
 <div class="box">
-    <% listAnimalsWithComments.forEach((animal) => { %>
-        <div class="animal">
-            <h2><%= animal.animal_name %></h2>
-            <% if (animal.comment_text) { %>
-                <p><strong>Comment:</strong> <%= animal.comment_text %></p>
-                <p><strong>Rating:</strong> <%= animal.rating %> / 10</p>
-            <% } else { %>
-                <p>No comments yet for this animal.</p>
-            <% } %>
-        </div>
-    <% }); %>
-    
+  <% listAnimalsWithComments.forEach((animal) => { %>
+    <div class="animal">
+        <form action="/delete" method="post" onsubmit="return confirm('Are you sure you want to delete this item?')">
+            <input type="hidden" name="deleteItemId" value="<%= animal.animal_id %>">
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
+
+      <h2><%= animal.animal_name %></h2>
+      <% if (animal.comment_text) { %>
+        <p><strong>Comment:</strong> <%= animal.comment_text %></p>
+        <p><strong>Rating:</strong> <%= animal.rating %> / 10</p>
+      <% } else { %>
+        <p>No comments yet for this animal.</p>
+      <% } %>
+
+      <!-- Edit Form -->
+      <form id="editForm<%= animal.animal_id %>" class="edit-form hidden" action="/edit" method="post">
+        <input type="hidden" name="updateAnimalId" value="<%= animal.animal_id %>">
+        <input type="text" name="updateAnimalName" value="<%= animal.animal_name %>" autocomplete="off" required>
+        <input type="text" name="updateAnimalComment" value="<%= animal.comment_text || '' %>" autocomplete="off">
+        <input type="number" name="updateAnimalRating" value="<%= animal.rating || 0 %>" min="1" max="10" required>
+        <button type="submit" class="edit">Update</button>
+      </form>
+
+      <!-- Edit Button -->
+      <button class="toggle-edit" onclick="toggleEdit('<%= animal.animal_id %>')">Edit</button>
+    </div>
+  <% }); %>
 </div>
 
 <div class="form-container">
-    <h3>Add New Animal and Comment</h3>
-    <form action="/add" method="POST">
-        <input type="text" name="animal_name" placeholder="Enter animal name" required />
-        <textarea name="comment" placeholder="Enter your comment" rows="3" required></textarea>
-        <input type="number" name="rating" placeholder="Rating (1-10)" min="1" max="10" required />
-        <button type="submit">Add Animal and Comment</button>
-    </form>
+  <h3>Add New Animal and Comment</h3>
+  <form action="/add" method="POST">
+    <input type="text" name="animal_name" placeholder="Enter animal name" required />
+    <textarea name="comment" placeholder="Enter your comment" rows="3" required></textarea>
+    <input type="number" name="rating" placeholder="Rating (1-10)" min="1" max="10" required />
+    <button type="submit">Add Animal and Comment</button>
+  </form>
 </div>
 
+<script>
+  function toggleEdit(animalId) {
+    const form = document.getElementById(`editForm${animalId}`);
+    form.classList.toggle("hidden");
+  }
+</script>
